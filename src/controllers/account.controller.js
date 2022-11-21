@@ -5,7 +5,6 @@ import db from "../database/db.js";
 export async function postAccount(req, res) {
   const { authorization } = req.headers;
   const body = req.body;
-  //Body formato de envio dos valores
   const finances = {
     description: body.description,
     value: body.value,
@@ -18,7 +17,6 @@ export async function postAccount(req, res) {
     type: joi.string().required(),
   });
 
-  //validação dos dados enviados
   const type = body.type === "income" || body.type === "outcome";
   const validation = userSchema.validate(finances, { abortEarly: false });
 
